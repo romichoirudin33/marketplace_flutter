@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:marketplaceflutterapp/page/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'include/banner.dart';
 import 'products.dart';
@@ -100,7 +101,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           IconButton(
             icon: Icon(Icons.settings, color: Colors.white),
-            onPressed: null,
+            onPressed: (){
+              Navigator.push(context, new MaterialPageRoute(builder: (context) => ProfilePage()));
+            },
           ),
         ],
       ),
