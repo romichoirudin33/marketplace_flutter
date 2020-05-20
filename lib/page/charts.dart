@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:marketplaceflutterapp/page/checkout.dart';
 
 import 'package:marketplaceflutterapp/products.dart';
 
@@ -110,14 +111,14 @@ class _MyChartsState extends State<MyChartsPage> {
                   Container(
                     child: OutlineButton(
                       child: Text(
-                        "Bayar (1)",
+                        "Lanjutkan (1)",
                         style: TextStyle(fontSize: 16),
                       ),
                       borderSide: BorderSide(color: Colors.green),
                       disabledBorderColor: Colors.green,
                       disabledTextColor: Colors.green,
                       shape: StadiumBorder(),
-                      onPressed: null,
+                      onPressed: _onCheckout,
                     ),
                   ),
                 ],
@@ -127,6 +128,13 @@ class _MyChartsState extends State<MyChartsPage> {
         ),
       ),
     );
+  }
+
+  void _onCheckout() {
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+            builder: (BuildContext context) => CheckOutPage()),
+        (Route<dynamic> route) => false);
   }
 }
 

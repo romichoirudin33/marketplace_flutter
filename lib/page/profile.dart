@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:marketplaceflutterapp/page/login.dart';
+import 'package:marketplaceflutterapp/page/setting_address.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -10,6 +11,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
   bool _isLoading = false;
 
   SharedPreferences sharedPreferences;
@@ -18,6 +20,10 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     checkSharedPreference();
+  }
+
+  void checkSharedPreference() async {
+    sharedPreferences = await SharedPreferences.getInstance();
   }
 
   @override
@@ -172,7 +178,10 @@ class _ProfilePageState extends State<ProfilePage> {
             disabledBorderColor: Colors.green,
             disabledTextColor: Colors.green,
             shape: StadiumBorder(),
-            onPressed: null,
+            onPressed: (){
+              Navigator.push(context, new MaterialPageRoute(builder: (context) => SettingAddressPage()));
+//              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => SettingAddressPage()), (Route<dynamic> route) => false);
+            },
           ),
           OutlineButton(
             child: Text(
@@ -193,7 +202,4 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  void checkSharedPreference() async {
-    sharedPreferences = await SharedPreferences.getInstance();
-  }
 }
