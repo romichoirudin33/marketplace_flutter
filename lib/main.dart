@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:marketplaceflutterapp/admin/home.dart';
 import 'package:marketplaceflutterapp/page/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'include/banner.dart';
@@ -82,6 +83,9 @@ class _MyHomePageState extends State<MyHomePage> {
     sharedPreferences = await SharedPreferences.getInstance();
     if(sharedPreferences.getString("token") == null) {
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => LoginPage()), (Route<dynamic> route) => false);
+    }
+    if(sharedPreferences.getString("admin") != null) {
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => AdminHomePage()), (Route<dynamic> route) => false);
     }
   }
 
@@ -377,6 +381,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-
 }

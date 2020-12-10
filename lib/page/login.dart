@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:marketplaceflutterapp/admin/home.dart';
 import 'package:marketplaceflutterapp/page/register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:marketplaceflutterapp/main.dart';
@@ -83,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
               hintStyle: TextStyle(color: Colors.green),
             ),
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: 15.0),
           TextFormField(
             controller: passwordController,
             cursorColor: Colors.green,
@@ -136,11 +137,24 @@ class _LoginPageState extends State<LoginPage> {
         _isLoading = false;
       });
       sharedPreferences.setString("token", "iniTokenNya");
+      sharedPreferences.setString("role", "user");
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
               builder: (BuildContext context) =>
                   MyHomePage(title: 'Home Page')),
           (Route<dynamic> route) => false);
+    }
+    if (username == 'admin' && password == 'password') {
+      setState(() {
+        _isLoading = false;
+      });
+      sharedPreferences.setString("token", "iniTokenNya");
+      sharedPreferences.setString("admin", "admin");
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+              builder: (BuildContext context) =>
+                  AdminHomePage(title: 'Admin dashboard')),
+              (Route<dynamic> route) => false);
     } else {
       setState(() {
         _isLoading = false;

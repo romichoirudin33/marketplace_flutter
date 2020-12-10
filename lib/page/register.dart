@@ -182,7 +182,7 @@ class _RegisterPageState extends State<RegisterPage> {
         },
         elevation: 0.0,
         color: Colors.teal,
-        child: Text("SIGN IN", style: TextStyle(color: Colors.white)),
+        child: Text("Daftar", style: TextStyle(color: Colors.white)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
       ),
     );
