@@ -14,53 +14,54 @@ final List<String> imgList = [
 final List<Widget> imageSliders = imgList
     .map(
       (item) => Container(
-    child: Container(
-      margin: EdgeInsets.only(
-        top: 10.0,
-        left: 2.0,
-        right: 2.0,
-        bottom: 2.0,
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-        child: Stack(
-          children: <Widget>[
-            Image.network(item, fit: BoxFit.cover, width: 1000.0),
-            Positioned(
-              bottom: 0.0,
-              left: 0.0,
-              right: 0.0,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color.fromARGB(200, 0, 0, 0),
-                      Color.fromARGB(0, 0, 0, 0)
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
+        child: Container(
+          margin: EdgeInsets.only(
+            top: 10.0,
+            left: 2.0,
+            right: 2.0,
+            bottom: 2.0,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            child: Stack(
+              children: <Widget>[
+                Image.network(item, fit: BoxFit.cover, width: 1000.0),
+                Positioned(
+                  bottom: 0.0,
+                  left: 0.0,
+                  right: 0.0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color.fromARGB(200, 0, 0, 0),
+                          Color.fromARGB(0, 0, 0, 0)
+                        ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                      ),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: 10.0,
+                    ),
+                    child: Text(
+                      'No. ${imgList.indexOf(item)} image',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
-                padding: EdgeInsets.symmetric(
-                  vertical: 10.0,
-                  horizontal: 10.0,
-                ),
-                child: Text(
-                  'No. ${imgList.indexOf(item)} image',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
-    ),
-  ),
-).toList();
+    )
+    .toList();
 
 class MyBanner extends StatefulWidget {
   MyBanner({Key key, this.title}) : super(key: key);
@@ -106,8 +107,7 @@ class _MyBannerState extends State<MyBanner> {
                   return Container(
                     width: 8.0,
                     height: 8.0,
-                    margin: EdgeInsets.only(
-                        top: 10.0, bottom: 10.0, left: 5.0),
+                    margin: EdgeInsets.only(top: 10.0, bottom: 10.0, left: 5.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: _current == index

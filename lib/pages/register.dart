@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:marketplaceflutterapp/page/login.dart';
+import 'package:marketplaceflutterapp/pages/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:marketplaceflutterapp/main.dart';
 
@@ -11,7 +11,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
   bool _isLoading = false;
 
   @override
@@ -28,16 +27,16 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         child: _isLoading
             ? Center(
-          child: CircularProgressIndicator(),
-        )
+                child: CircularProgressIndicator(),
+              )
             : ListView(
-          children: <Widget>[
-            headerSection(),
-            bodySection(),
-            buttonSection(),
-            anotherLogin(),
-          ],
-        ),
+                children: <Widget>[
+                  headerSection(),
+                  bodySection(),
+                  buttonSection(),
+                  anotherLogin(),
+                ],
+              ),
       ),
     );
   }
@@ -60,7 +59,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController phoneController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
-  final TextEditingController confirmPasswordController = new TextEditingController();
+  final TextEditingController confirmPasswordController =
+      new TextEditingController();
 
   Container bodySection() {
     return Container(
@@ -172,14 +172,20 @@ class _RegisterPageState extends State<RegisterPage> {
       margin: EdgeInsets.only(top: 15.0),
       child: RaisedButton(
         onPressed:
-        usernameController.text == "" || passwordController.text == ""
-            ? null
-            : () {
-          setState(() {
-            _isLoading = true;
-          });
-          register(nameController.text, usernameController.text, emailController.text, phoneController.text, passwordController.text, confirmPasswordController.text);
-        },
+            usernameController.text == "" || passwordController.text == ""
+                ? null
+                : () {
+                    setState(() {
+                      _isLoading = true;
+                    });
+                    register(
+                        nameController.text,
+                        usernameController.text,
+                        emailController.text,
+                        phoneController.text,
+                        passwordController.text,
+                        confirmPasswordController.text);
+                  },
         elevation: 0.0,
         color: Colors.teal,
         child: Text("Daftar", style: TextStyle(color: Colors.white)),
@@ -188,8 +194,8 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void register(String name, username, email, phone, password, confirmPassword) async {
-
+  void register(
+      String name, username, email, phone, password, confirmPassword) async {
     //make validation in here
 
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -199,9 +205,8 @@ class _RegisterPageState extends State<RegisterPage> {
     sharedPreferences.setString("token", "iniTokenNya");
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
-            builder: (BuildContext context) =>
-                MyHomePage(title: 'Home Page')),
-            (Route<dynamic> route) => false);
+            builder: (BuildContext context) => MyHomePage(title: 'Home Page')),
+        (Route<dynamic> route) => false);
   }
 
   Container anotherLogin() {
@@ -217,13 +222,15 @@ class _RegisterPageState extends State<RegisterPage> {
             onTap: () {
               Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          LoginPage()),
-                      (Route<dynamic> route) => false);
+                      builder: (BuildContext context) => LoginPage()),
+                  (Route<dynamic> route) => false);
             },
             child: Text(
               'Sign In',
-              style: TextStyle(color: Colors.white, fontSize: 14, decoration: TextDecoration.underline),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  decoration: TextDecoration.underline),
             ),
           ),
         ],

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marketplaceflutterapp/admin/home.dart';
-import 'package:marketplaceflutterapp/page/profile.dart';
+import 'package:marketplaceflutterapp/pages/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'include/banner.dart';
 import 'products.dart';
-import 'page/charts.dart';
-import 'page/login.dart';
+import 'pages/charts.dart';
+import 'pages/login.dart';
 
 void main() {
   runApp(MyApp());
@@ -70,7 +70,6 @@ final List<Product> productList = [
 ];
 
 class _MyHomePageState extends State<MyHomePage> {
-
   SharedPreferences sharedPreferences;
 
   @override
@@ -79,13 +78,17 @@ class _MyHomePageState extends State<MyHomePage> {
     checkLoginStatus();
   }
 
-  void checkLoginStatus() async{
+  void checkLoginStatus() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    if(sharedPreferences.getString("token") == null) {
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => LoginPage()), (Route<dynamic> route) => false);
+    if (sharedPreferences.getString("token") == null) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+          (Route<dynamic> route) => false);
     }
-    if(sharedPreferences.getString("admin") != null) {
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => AdminHomePage()), (Route<dynamic> route) => false);
+    if (sharedPreferences.getString("admin") != null) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (BuildContext context) => AdminHomePage()),
+          (Route<dynamic> route) => false);
     }
   }
 
@@ -99,19 +102,20 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart, color: Colors.white),
-            onPressed: (){
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => MyChartsPage()));
+            onPressed: () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => MyChartsPage()));
             },
           ),
           IconButton(
             icon: Icon(Icons.settings, color: Colors.white),
-            onPressed: (){
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => ProfilePage()));
+            onPressed: () {
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => ProfilePage()));
             },
           ),
         ],
       ),
-
       body: Container(
         child: CustomScrollView(
           slivers: <Widget>[

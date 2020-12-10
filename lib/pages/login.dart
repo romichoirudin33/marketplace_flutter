@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:marketplaceflutterapp/admin/home.dart';
-import 'package:marketplaceflutterapp/page/register.dart';
+import 'package:marketplaceflutterapp/pages/register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:marketplaceflutterapp/main.dart';
 
@@ -154,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
           MaterialPageRoute(
               builder: (BuildContext context) =>
                   AdminHomePage(title: 'Admin dashboard')),
-              (Route<dynamic> route) => false);
+          (Route<dynamic> route) => false);
     } else {
       setState(() {
         _isLoading = false;

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:marketplaceflutterapp/page/checkout.dart';
+import 'package:marketplaceflutterapp/pages/checkout.dart';
 
 import 'package:marketplaceflutterapp/products.dart';
 
@@ -132,8 +132,7 @@ class _MyChartsState extends State<MyChartsPage> {
 
   void _onCheckout() {
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-            builder: (BuildContext context) => CheckOutPage()),
+        MaterialPageRoute(builder: (BuildContext context) => CheckOutPage()),
         (Route<dynamic> route) => false);
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:marketplaceflutterapp/page/login.dart';
-import 'package:marketplaceflutterapp/page/setting_address.dart';
+import 'package:marketplaceflutterapp/pages/login.dart';
+import 'package:marketplaceflutterapp/pages/setting_address.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -11,7 +11,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
   bool _isLoading = false;
 
   SharedPreferences sharedPreferences;
@@ -159,9 +158,7 @@ class _ProfilePageState extends State<ProfilePage> {
       decoration: BoxDecoration(
         boxShadow: <BoxShadow>[
           BoxShadow(
-              color: Colors.grey,
-              blurRadius: 3.0,
-              offset: Offset(0.0, -2.0))
+              color: Colors.grey, blurRadius: 3.0, offset: Offset(0.0, -2.0))
         ],
         color: Colors.white,
       ),
@@ -178,8 +175,11 @@ class _ProfilePageState extends State<ProfilePage> {
             disabledBorderColor: Colors.green,
             disabledTextColor: Colors.green,
             shape: StadiumBorder(),
-            onPressed: (){
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => SettingAddressPage()));
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => SettingAddressPage()));
 //              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => SettingAddressPage()), (Route<dynamic> route) => false);
             },
           ),
@@ -192,14 +192,16 @@ class _ProfilePageState extends State<ProfilePage> {
             disabledBorderColor: Colors.green,
             disabledTextColor: Colors.green,
             shape: StadiumBorder(),
-            onPressed: (){
+            onPressed: () {
               sharedPreferences.clear();
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => LoginPage()), (Route<dynamic> route) => false);
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => LoginPage()),
+                  (Route<dynamic> route) => false);
             },
           ),
         ],
       ),
     );
   }
-
 }

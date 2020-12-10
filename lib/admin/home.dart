@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marketplaceflutterapp/admin/new_ordering.dart';
-import 'package:marketplaceflutterapp/page/login.dart';
+import 'package:marketplaceflutterapp/pages/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminHomePage extends StatefulWidget {
@@ -73,8 +73,11 @@ class _AdminHomePageState extends State<AdminHomePage> {
               ],
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => NewOrderingPage()));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => NewOrderingPage()));
               },
               child: Container(
                 height: 120,
@@ -87,22 +90,30 @@ class _AdminHomePageState extends State<AdminHomePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Icon(Icons.info, size: 75, color: Colors.white,),
+                      Icon(
+                        Icons.info,
+                        size: 75,
+                        color: Colors.white,
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text('Pemesanan Baru', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold)),
-                          _isLoading ? Text('0', style: TextStyle(color: Colors.white)) : Text('1', style: TextStyle(color: Colors.white))
+                          Text('Pemesanan Baru',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold)),
+                          _isLoading
+                              ? Text('0', style: TextStyle(color: Colors.white))
+                              : Text('1', style: TextStyle(color: Colors.white))
                         ],
                       )
-
                     ],
                   ),
                 ),
               ),
             ),
-
             Container(
                 height: 120,
                 child: Card(
@@ -114,20 +125,26 @@ class _AdminHomePageState extends State<AdminHomePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Icon(Icons.shopping_cart, size: 75, color: Colors.white,),
+                      Icon(
+                        Icons.shopping_cart,
+                        size: 75,
+                        color: Colors.white,
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text('Daftar Pemesanan', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold)),
+                          Text('Daftar Pemesanan',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold)),
                           Text('0', style: TextStyle(color: Colors.white))
                         ],
                       )
-
                     ],
                   ),
-                )
-            ),
+                )),
           ],
         ),
       ),
